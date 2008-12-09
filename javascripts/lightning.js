@@ -1,7 +1,26 @@
 /**
-*   Throws a lightning effect on target element.
+*    == Script: nifty_countdown.js
+*       Throws a lightning effect on target element.
+*   
+*    == Syntax
+*       var myLightning = new Lightning(target[, options]);
+*
+*   == Arguments
+*       1. target - (element) The element to be attacked with lightning.
+*       2. options - (object, optional) Options for the lightning effect.
+*
+*   == Options
+*       thickness - (mixed: defaults to 1px) The width of the smallest lightning.
+*       color - (mixed: defaults to #fff) The color of the lightning effect.
+*       verticalDuration - (number: defaults to 1200) the duration of the vertical lightning effect.
+*       frontDuration - (number: defaults to 800) the duration of the element fade away.
+*       strikeInterval - (number: 7000) How often the Lightning is applied.
+*
+*   == Example
+*       new Lightning('logo');
+*
 *   == Author
-*   Kevin Valdek (cannedApps)
+*       Kevin Valdek (cannedApps)
 */
 
 var Lightning = new Class( {
@@ -18,9 +37,9 @@ var Lightning = new Class( {
     
     lightnings: [],
     
-    initialize: function( target ) {
+    initialize: function( target, options ) {
         this.target = $( target );
-        this.setOptions( target );
+        this.setOptions( options );
         this.targetCoords = this.target.getCoordinates();
         this.firstLightning = new Element( 'span', {
             styles: {
@@ -54,7 +73,7 @@ var Lightning = new Class( {
     },
     
     attack: function() {
-        this.explode();
+        Browser.Engine.trident4 ?  this.iexplode() : this.explode();
         $each( this.lightnings, function( lightning ) {
             lightning.setStyle( 'display', 'block' ).verticalAttack.start( 'left', lightning.getStyle( 'left' ).toInt() + this.targetCoords.width.toInt() );
         }, this );
@@ -64,6 +83,10 @@ var Lightning = new Class( {
         this.explosionContainer.frontAttack.start( 'opacity', .85 ).chain( function() {
             this.start( 'opacity', 0 )
         } );
+    },
+    
+    iexplode: function() {
+        // TODO: some effect for the ie6eers
     },
     
     clone: function( who, multiple ) {

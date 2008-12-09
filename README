@@ -18,10 +18,8 @@ Lightning
 Creates a lightning effect on an element (preferably an image).
 Live usage: www.cannedapps.com
 
-== TODO
- + cross-browser fixes.
- + docs.
- + add usage flexibility.
+== Status
+Tested in Firefox/3.0.4. Works as a light version in IE6.
 
 
 NiftyCountdown
