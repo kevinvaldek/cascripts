@@ -1,7 +1,19 @@
 /**
-*   Displays a countdown in a nifty manner.
+*   == Script: nifty_countdown.js
+*       Displays a countdown in a nifty manner, using styled images as numbers.
+*   
+*   == Syntax
+*       var myCountdown = new NiftyCountdown(clockBoard, endTime);
+*
+*   == Arguments
+*       1. clockBoard - (element) The container Element for the countdown blocks.
+*       2. endTime - (String) The end time to be passed to new Date(endTime).
+*
+*   == Example
+*       new NiftyCountdown( 'countdown', "23 December, 2009" );
+*
 *   == Author
-*   Kevin Valdek (cannedApps)
+*       Kevin Valdek (cannedApps)
 */
 
 
@@ -9,10 +21,10 @@ var NiftyCountdown = new Class( {
 
     Extends: Countdown,
     
-    initialize: function( clockBoard, startTime ) {
+    initialize: function( clockBoard, endTime ) {
         this.clockBoard = $( clockBoard );
         this.buildBlocks();
-        this.parent( new Date( startTime ) );
+        this.parent( new Date( endTime ) );
     },
     
     buildBlocks: function() {
@@ -23,10 +35,10 @@ var NiftyCountdown = new Class( {
     },
     
     insertBlock: function( spectrum ) {
-        return new Element( 'div', { id: spectrum, styles: {
-            width: this.clockBoard.getStyle( 'width' ),
-            height: this.clockBoard.getStyle( 'height' ).toInt() / 4
-        } } ).adopt( new Element( 'img', { src: '/images/countdown/' + spectrum[0,0] + '.png', class: 'time_unit',styles: { 'float': 'right' } } ) ).inject( this.clockBoard );
+        return new Element( 'div', { 'id': spectrum, 'styles': {
+            'width': this.clockBoard.getStyle( 'width' ),
+            'height': this.clockBoard.getStyle( 'height' ).toInt() / 4
+        } } ).adopt( new Element( 'img', { 'src': '/images/countdown/' + spectrum.substring( 0, 1 ) + '.png', 'class': 'time_unit', 'styles': { 'float': 'right' } } ) ).inject( this.clockBoard );
     },
     
     exportTime: function() {
@@ -45,14 +57,14 @@ var NiftyCountdown = new Class( {
     
     updateTime: function( board, time ) {
         board.getElements( '.number' ).dispose();
-        var twodigit = $defined( (time + '')[0,1] );
+        var twodigit = (time + '').substring( 1, 2 ) != '';
         if( !twodigit ) this.getNumber( 0 ).inject( board );
-        this.getNumber( (time + '')[0,0] ).inject( board );
-        if( twodigit ) this.getNumber( (time + '')[0,1] ).inject( board );
+        this.getNumber( (time + '').substring( 0, 1 ) ).inject( board );
+        if( twodigit ) this.getNumber( (time + '').substring( 1, 2 ) ).inject( board );
     },
     
     getNumber: function( number ) {
-        return new Element( 'img', { src: '/images/countdown/' + number + '.png', class: 'number' } );
+        return new Element( 'img', { 'src': '/images/countdown/' + number + '.png', 'class': 'number' } );
     }
 
 } );
