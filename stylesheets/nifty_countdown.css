@@ -1,0 +1,15 @@
+#countdown {
+    float: left;
+    width: 130px;
+    height: 360px;
+    position: absolute;
+    left: 150px;
+}
+
+#countdown .number {
+    margin-right: 5px;
+}
+
+#countdown .time_unit {
+    margin-top: 56px;
+}
