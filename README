@@ -2,19 +2,18 @@ All scripts require MooTools 1.2.*
 
 ImageSweeper
 ============
-
 A banner-like effect. Converts a unsorted list of image hrefs to a fadeing-sweeping-banner.
 Live usage: www.superego.ee
 
 == TODO
  + cross-browser fixes.
- + docs.
- + add usage flexibility.
+
+== Status
+Known issue with the +sweepLength+ optional argument - not critical.
 
 
 Lightning
 =========
-
 Creates a lightning effect on an element (preferably an image).
 Live usage: www.cannedapps.com
 
@@ -24,7 +23,6 @@ Tested in Firefox/3.0.4. Works as a light version in IE6.
 
 NiftyCountdown
 ==============
-
 Extends an existent class Countdown. Adds a pretty nice finish to the countdown.
 Live usage: www.cannedapps.com
 

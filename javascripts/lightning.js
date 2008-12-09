@@ -1,5 +1,5 @@
 /**
-*    == Script: nifty_countdown.js
+*    == Script: lightning.js
 *       Throws a lightning effect on target element.
 *   
 *    == Syntax
@@ -14,7 +14,7 @@
 *       color - (mixed: defaults to #fff) The color of the lightning effect.
 *       verticalDuration - (number: defaults to 1200) the duration of the vertical lightning effect.
 *       frontDuration - (number: defaults to 800) the duration of the element fade away.
-*       strikeInterval - (number: 7000) How often the Lightning is applied.
+*       strikeInterval - (number: defaults to 7000) How often the Lightning is applied.
 *
 *   == Example
 *       new Lightning('logo');

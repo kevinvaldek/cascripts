@@ -1,7 +1,34 @@
 /**
-*   Slides images with a smooth discrete sweep and fade.
+*    == Script: image_sweeper.js
+*       Creates a slide of images with a smooth tween and fade.
+*   
+*    == Syntax
+*       var mySweeper = new ImageSweeper(showRoom[, options]);
+*
+*   == Arguments
+*       1. showRoom - (element) The container for the slides.
+*       2. options - (object, optional) Options for the sweeper.
+*
+*   == Options
+*       shiftInterval - (number: defaults to 7000) How often a new image is sweeped into the showRoom.
+*       fadeDuration - (number: defaults to 1500) The duration of the fade of the effect.
+*       sweepDuration - (number: defaults to 1000) The duration of the sweep of the effect.
+*       sweepLength - (mixed: defaults to 20px) How far away from the image is sweeped from its center.
+*
+*   == Example
+*       new ImageSweeper('right_banner');
+*       = In html file:
+*       <div id="right_banner">
+*         <ul>
+*            <li size="520x460">/images/file/image_one.png</li>
+*            <li size="520x460">/images/file/image_two.png</li>
+*            <li size="520x460">/images/file/image_n.png</li>
+*         </ul>
+*       </div>
+*       <!-- the size parameter of li must be defined. If a li element has a id, it will get copied. -->
+*
 *   == Author
-*   Kevin Valdek (cannedApps)
+*       Kevin Valdek (cannedApps)
 */
 
 var ImageSweeper = new Class( {
@@ -24,7 +51,7 @@ var ImageSweeper = new Class( {
         this.setOptions( options );
         this.options.sweepLength = this.options.sweepLength.toInt();
         
-        // Load images ass assets in background.
+        // Load images as assets in background.
         $each( this.showRoom.getElements( 'li' ), function( item ) {
             var dimensions = item.getProperty('size').split('x');
             var asset = new Asset.image( item.get('text'), {
