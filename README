@@ -15,7 +15,7 @@ Known issue with the +sweepLength+ optional argument - not critical.
 Lightning
 =========
 Creates a lightning effect on an element (preferably an image).
-Live usage: www.cannedapps.com
+Demo usage: www.cannedapps.com/cascripts
 
 == Status
 Tested in Firefox/3.0.4. Works as a light version in IE6.
@@ -24,7 +24,7 @@ Tested in Firefox/3.0.4. Works as a light version in IE6.
 NiftyCountdown
 ==============
 Extends an existent class Countdown. Adds a pretty nice finish to the countdown.
-Live usage: www.cannedapps.com
+Demo usage: www.cannedapps.com/cascripts
 
 == Status
 Tested in Firefox/3.0.4, IE6.
