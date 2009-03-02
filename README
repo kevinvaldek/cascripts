@@ -3,7 +3,7 @@ All scripts require MooTools 1.2.*
 ImageSweeper
 ============
 A banner-like effect. Converts a unsorted list of image hrefs to a fadeing-sweeping-banner.
-Live usage: www.superego.ee
+Live usage: http://www.superego.ee
 
 == TODO
  + cross-browser fixes.
@@ -12,10 +12,21 @@ Live usage: www.superego.ee
 Known issue with the +sweepLength+ optional argument - not critical.
 
 
+MooList
+=======
+Endless page with MooTools powered Ajax list. Fetches new records to list as the
+user scrolls down the window.
+Demo usage: http://www.cannedapps.com/cascripts/moo_list
+Blog: http://www.cannedapps.com/?blog_post=6
+
+== Status
+Tested in Firefox/3.0.4, IE6.
+
+
 Lightning
 =========
 Creates a lightning effect on an element (preferably an image).
-Demo usage: www.cannedapps.com/cascripts
+Demo usage: http://www.cannedapps.com/cascripts
 
 == Status
 Tested in Firefox/3.0.4. Works as a light version in IE6.
@@ -24,7 +35,7 @@ Tested in Firefox/3.0.4. Works as a light version in IE6.
 NiftyCountdown
 ==============
 Extends an existent class Countdown. Adds a pretty nice finish to the countdown.
-Demo usage: www.cannedapps.com/cascripts
+Demo usage: http://www.cannedapps.com/cascripts
 
 == Status
 Tested in Firefox/3.0.4, IE6.
