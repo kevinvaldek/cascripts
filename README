@@ -1,5 +1,15 @@
 All scripts require MooTools 1.2.*
 
+HoverizedMenu
+=============
+Adds hover effects on a collection of icons. Hover consists of a cover that is displayed
+in fron of icon with transparency.
+Demo usage: Coming soon.
+
+== Status
+Tested in Firefox/3.0.4.
+
+
 ImageSweeper
 ============
 A banner-like effect. Converts a unsorted list of image hrefs to a fadeing-sweeping-banner.
@@ -12,6 +22,15 @@ Live usage: http://www.superego.ee
 Known issue with the +sweepLength+ optional argument - not critical.
 
 
+Lightning
+=========
+Creates a lightning effect on an element (preferably an image).
+Demo usage: http://www.cannedapps.com/cascripts
+
+== Status
+Tested in Firefox/3.0.4. Works as a light version in IE6.
+
+
 MooList
 =======
 Endless page with MooTools powered Ajax list. Fetches new records to list as the
@@ -21,15 +40,6 @@ Blog: http://www.cannedapps.com/?blog_post=6
 
 == Status
 Tested in Firefox/3.0.4, IE6.
-
-
-Lightning
-=========
-Creates a lightning effect on an element (preferably an image).
-Demo usage: http://www.cannedapps.com/cascripts
-
-== Status
-Tested in Firefox/3.0.4. Works as a light version in IE6.
 
 
 NiftyCountdown
