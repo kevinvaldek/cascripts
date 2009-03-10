@@ -57,19 +57,14 @@ var HoverizedMenu = new Class({
     },
     
     addHoverEffects: function() {
-        this.icons.each(function(icon) {
-            icon.addEvent('mouseenter', function() {
-                icon.retrieve('cover').setStyle('display', 'block');
-                this.fireEvent('hover', icon);
-            }.bind(this));
-        }, this);
-
-        this.wrapper.addEvent('mouseenter', function() {
-            this.icons.each(function(icon) { // remove all covers (avoiding stuck covers)
-                icon.retrieve('cover').setStyle('display', 'none');
-                this.fireEvent('hoverOut', icon);
-            }, this);
-        }.bind(this)); 
+        var changeIconState = function(icon, display) {
+            icon.retrieve('cover').setStyle('display', display);
+            this.fireEvent(display == 'block' ? 'hover' : 'hoverOut', icon);
+        }.bind(this);
+        this.icons.each(function(icon) { icon.addEvent('mouseenter', changeIconState.pass([icon, 'block'])); }, this);
+        this.wrapper.addEvent('mouseenter', function() { this.icons.each(function(icon) { 
+            changeIconState(icon, 'none');
+        }); }.bind(this)); 
     },
     
     buildCovers: function() {
@@ -100,6 +95,6 @@ var HoverizedMenu = new Class({
         if(this.options.width) styles['width'] = this.options.width;
         if(this.options.height) styles['height'] = this.options.height;
         return styles;
-    }
+    } 
     
 });
