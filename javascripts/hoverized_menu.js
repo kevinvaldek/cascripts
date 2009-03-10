@@ -3,8 +3,8 @@
 *       Given a collection of menu icons or a wrapper, HoverizedMenu creates covers upon icons
 *       that are displayed when icons get hovered. Dimensions from the icon are used on cover.
 *
-*    == Syntax
-*       var myHoveredMenu = new HoverizedMenu(el[, options]);
+*   == Syntax
+*      var myHoveredMenu = new HoverizedMenu(el[, options]);
 *
 *   == Arguments
 *       1. el - (element|collection) The wrapper element of all icons(img-s) or all the icons in a collection.
@@ -17,7 +17,9 @@
 *       opacity - (Number: defaults to 0.5) The opacity of the cover.
 *
 *   == Events
-*       onBuildCover: Fired when cover has been attached to icon. Passes the cover as argument.
+*       onBuildCover: Fired when cover has been attached to icon. Passes the icon as argument.
+*       onHover: Fired when icon is hovered. Passes the icon as argument.
+*       onHoverOut: Fired when icon is no longer hovered. Passes the icon as argument.
 *
 *   == Author   
 *       Kevin Valdek (cannedApps)  - created 2009-03-10
@@ -29,6 +31,8 @@ var HoverizedMenu = new Class({
     
     options: {
         onBuildCover: $empty,
+        onHover: $empty,
+        onHoverOut: $empty,
         width: null,        
         height: null,
         cursor: 'pointer',
@@ -53,8 +57,19 @@ var HoverizedMenu = new Class({
     },
     
     addHoverEffects: function() {
-        this.icons.addEvent('mouseenter', function() { this.retrieve('cover').setStyle('display', 'block'); });
-        this.wrapper.addEvent('mouseenter', function() { $$('.icon_cover').setStyle('display', 'none'); }); // remove all covers (avoiding stuck covers)
+        this.icons.each(function(icon) {
+            icon.addEvent('mouseenter', function() {
+                icon.retrieve('cover').setStyle('display', 'block');
+                this.fireEvent('hover', icon);
+            }.bind(this));
+        }, this);
+
+        this.wrapper.addEvent('mouseenter', function() {
+            this.icons.each(function(icon) { // remove all covers (avoiding stuck covers)
+                icon.retrieve('cover').setStyle('display', 'none');
+                this.fireEvent('hoverOut', icon);
+            }, this);
+        }.bind(this)); 
     },
     
     buildCovers: function() {
@@ -69,7 +84,7 @@ var HoverizedMenu = new Class({
             'class': 'icon_cover', // set cover background with css property
             styles: $merge(icon.getCoordinates(), this.coverStyles())
         })).inject(document.body, 'top');
-        this.fireEvent('buildCover', icon.retrieve('cover'));
+        this.fireEvent('buildCover', icon);
     },
     
     /**
