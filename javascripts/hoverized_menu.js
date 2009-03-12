@@ -14,7 +14,7 @@
 *   == Options
 *       width - (mixed: defaults to the icon width) The width of the cover.
 *       height - (mixed: defaults to the icon height) The height of the cover.
-*       hursor - (String: defaults to 'pointer') The cursor to be displayed on cover.
+*       cursor - (String: defaults to 'pointer') The cursor to be displayed on cover.
 *       opacity - (Number: defaults to 1) The opacity of the cover.
 *
 *   == Events
